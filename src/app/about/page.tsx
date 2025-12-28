@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Users, Target, Award, Lightbulb, ChevronDown, Mail, Phone, MapPin, Menu, X, Microscope, Shield, TrendingUp } from 'lucide-react';
+import { Users, Target, Lightbulb, ChevronDown, Mail, Phone, MapPin, Menu, X, Microscope, Shield, TrendingUp } from 'lucide-react';
 
 const values = [
   {
@@ -35,240 +35,212 @@ const leadership = [
     image: null
   },
   {
-    name: 'Marcus Williams',
-    role: 'Chief Operating Officer',
-    bio: '15 years scaling laboratory operations. Previously VP of Operations at LabCorp, where he oversaw 200+ testing facilities. MBA from Wharton, BS in Chemical Engineering from Georgia Tech.',
+    name: 'Marcus Thompson',
+    role: 'Chief Operations Officer',
+    bio: 'Previously VP of Operations at LabCorp. Expert in scaling laboratory operations while maintaining quality standards. MBA from Wharton, BS in Biology from Howard University.',
     image: null
   },
   {
-    name: 'Dr. James Park, Ph.D.',
+    name: 'Dr. Rachel Okonkwo, Ph.D.',
     role: 'Chief Scientific Officer',
-    bio: 'Pioneered cannabis potency testing methods now used industry-wide. Published 40+ peer-reviewed papers on cannabinoid analysis. Former professor at UC Davis, Ph.D. from Stanford.',
+    bio: 'Pioneer in cannabis analytical methodology with 45+ peer-reviewed publications. Former professor at UC Berkeley. Developed the first validated LC-MS method for minor cannabinoids.',
     image: null
   },
   {
-    name: 'Elena Rodriguez, J.D.',
-    role: 'Chief Compliance Officer',
-    bio: 'Former DEA Diversion Investigator with 12 years federal experience. Expert in controlled substance regulations and state cannabis licensing. J.D. from Georgetown Law.',
+    name: 'James Park',
+    role: 'VP of Regulatory Affairs',
+    bio: 'Former DEA compliance officer with deep expertise in Schedule I research protocols. Has guided 200+ laboratories through DEA registration and state licensing processes.',
     image: null
   }
 ];
 
 const timeline = [
-  { year: '2018', title: 'Founded in Denver', description: 'Dr. Sarah Chen establishes Quantix Analytics with a mission to bring pharmaceutical-grade testing to the cannabis industry.' },
-  { year: '2019', title: 'DEA Registration', description: 'Received DEA Schedule I Researcher registration, enabling controlled substance R&D and reference standard production.' },
-  { year: '2020', title: 'ISO 17025 Accreditation', description: 'Achieved ISO/IEC 17025 accreditation from A2LA, validating our quality management system and technical competence.' },
-  { year: '2021', title: 'National Expansion', description: 'Opened satellite laboratories in California, Michigan, and Florida. Reached 15 state licenses.' },
-  { year: '2022', title: 'ISO 17034 Certified', description: 'Became one of only 5 labs in North America certified to produce cannabis certified reference materials.' },
-  { year: '2023', title: '100,000 Tests Milestone', description: 'Processed our 100,000th sample while maintaining 99.7% on-time delivery and zero compliance violations.' },
-  { year: '2024', title: '38 State Licenses', description: 'Expanded to 38 state markets with 4 regional laboratories, serving over 500 licensed cannabis operators.' }
+  { year: '2018', event: 'Founded in Denver, CO with initial DEA Schedule I research registration' },
+  { year: '2019', event: 'Achieved ISO/IEC 17025 accreditation. Expanded to 5 state licenses.' },
+  { year: '2020', event: 'Launched consulting division. Helped 50+ labs achieve compliance.' },
+  { year: '2021', event: 'Opened second facility in Oakland, CA. Reached 20 state licenses.' },
+  { year: '2022', event: 'Achieved ISO 17034 accreditation for reference standards production.' },
+  { year: '2023', event: 'Expanded to 38 states. Processed 500,000th sample.' },
+  { year: '2024', event: 'Launched AI-powered COA verification platform. Industry recognition awards.' }
 ];
 
-const stats = [
-  { value: '500+', label: 'Licensed Clients' },
-  { value: '38', label: 'State Licenses' },
-  { value: '6', label: 'Years Operating' },
-  { value: '0', label: 'Compliance Violations' }
-];
-
-export default function About() {
-  const [expandedLeader, setExpandedLeader] = useState<string | null>(null);
+export default function AboutPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [expandedLeader, setExpandedLeader] = useState<number | null>(null);
 
   return (
-    <main className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white">
       {/* Navigation */}
       <nav className="border-b border-zinc-800">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            <Image 
-              src="https://uaednwpxursknmwdeejn.supabase.co/storage/v1/object/public/product-images/ai-generated/CD2E1122-D511-4EDB-BE5D-98EF274B4BAF/no-bg/E9DA3959-08AF-4881-9CD3-456C8FBA0BF7.png"
-              alt="Quantix Analytics"
-              width={180}
-              height={180}
-              className="h-16 w-auto md:h-20"
-            />
-          </Link>
-          
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
-            <Link href="/" className="text-zinc-400 hover:text-white transition-colors">Certifications</Link>
-            <Link href="/about" className="text-white font-medium">About</Link>
-            <a href="#contact" className="px-4 py-2 bg-white text-black font-medium hover:bg-zinc-200 transition-colors">
-              Contact Us
-            </a>
-          </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <Link href="/" className="flex items-center gap-3">
+              <Image 
+                src="https://uaednwpxursknmwdeejn.supabase.co/storage/v1/object/public/product-images/ai-generated/CD2E1122-D511-4EDB-BE5D-98EF274B4BAF/no-bg/E9DA3959-08AF-4881-9CD3-456C8FBA0BF7.png"
+                alt="Quantix Analytics"
+                width={80}
+                height={80}
+                className="h-12 sm:h-16 w-auto"
+              />
+              <span className="text-lg sm:text-xl font-bold tracking-tight">QUANTIX</span>
+            </Link>
+            
+            {/* Desktop Nav */}
+            <div className="hidden md:flex items-center gap-8">
+              <Link href="/" className="text-zinc-400 hover:text-white transition-colors">Certifications</Link>
+              <Link href="/about" className="text-white font-medium">About</Link>
+              <Link href="/" className="px-4 py-2 bg-white text-black font-semibold hover:bg-zinc-200 transition-colors">
+                Contact Us
+              </Link>
+            </div>
 
-          {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden p-2"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            {/* Mobile menu button */}
+            <button 
+              className="md:hidden p-2"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Nav */}
         {mobileMenuOpen && (
           <div className="md:hidden border-t border-zinc-800 px-4 py-4 space-y-4">
-            <Link href="/" className="block text-zinc-400">Certifications</Link>
+            <Link href="/" className="block text-zinc-400 hover:text-white">Certifications</Link>
             <Link href="/about" className="block text-white font-medium">About</Link>
-            <a href="#contact" className="block px-4 py-2 bg-white text-black font-medium text-center">
+            <Link href="/" className="block px-4 py-2 bg-white text-black font-semibold text-center">
               Contact Us
-            </a>
+            </Link>
           </div>
         )}
       </nav>
 
       {/* Hero */}
-      <section className="border-b border-zinc-800">
-        <div className="max-w-6xl mx-auto px-4 py-12 md:py-20">
-          <div className="inline-block px-3 py-1 border border-zinc-700 text-zinc-400 text-xs md:text-sm mb-6">
-            ABOUT QUANTIX ANALYTICS
-          </div>
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            The Science of<br />
-            <span className="text-zinc-500">Cannabis Compliance</span>
+      <section className="py-12 sm:py-20 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-3xl sm:text-5xl font-bold mb-6">
+            Setting the Standard for Cannabis Laboratory Excellence
           </h1>
-          <p className="text-zinc-400 text-base md:text-lg max-w-2xl">
-            Founded in 2018, Quantix Analytics was built on a simple premise: the cannabis industry 
-            deserves the same rigorous analytical standards as pharmaceuticals. Today, we're the 
-            trusted testing partner for over 500 licensed operators across 38 states.
+          <p className="text-lg sm:text-xl text-zinc-400 leading-relaxed">
+            Since 2018, Quantix Analytics has been the trusted partner for cannabis businesses 
+            navigating the complex landscape of DEA compliance, ISO accreditation, and state regulations.
           </p>
         </div>
       </section>
 
-      {/* Stats Bar */}
-      <section className="border-b border-zinc-800 bg-zinc-950">
-        <div className="max-w-6xl mx-auto px-4 py-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center">
-            {stats.map((stat, idx) => (
-              <div key={idx}>
-                <div className="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
-                <div className="text-xs md:text-sm text-zinc-500">{stat.label}</div>
+      {/* Mission & Vision */}
+      <section className="py-12 sm:py-16 px-4 border-t border-zinc-800">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 sm:gap-12">
+          <div className="p-6 sm:p-8 border border-zinc-800">
+            <div className="flex items-center gap-3 mb-4">
+              <Target className="text-zinc-400" size={28} />
+              <h2 className="text-xl sm:text-2xl font-bold">Our Mission</h2>
+            </div>
+            <p className="text-zinc-400 leading-relaxed">
+              To provide the cannabis industry with world-class analytical testing services and 
+              compliance consulting that ensures product safety, regulatory adherence, and consumer trust.
+              We believe rigorous science and transparent processes are the foundation of a legitimate industry.
+            </p>
+          </div>
+          <div className="p-6 sm:p-8 border border-zinc-800">
+            <div className="flex items-center gap-3 mb-4">
+              <TrendingUp className="text-zinc-400" size={28} />
+              <h2 className="text-xl sm:text-2xl font-bold">Our Vision</h2>
+            </div>
+            <p className="text-zinc-400 leading-relaxed">
+              To be the definitive authority in cannabis laboratory certification and testing, 
+              driving industry-wide standards that protect consumers and enable businesses to thrive.
+              We envision a future where every cannabis product meets pharmaceutical-grade quality standards.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Core Values */}
+      <section className="py-12 sm:py-16 px-4 border-t border-zinc-800">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10">Core Values</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {values.map((value, index) => (
+              <div key={index} className="p-6 border border-zinc-800 hover:border-zinc-600 transition-colors">
+                <value.icon className="text-zinc-400 mb-4" size={32} />
+                <h3 className="text-lg font-bold mb-2">{value.title}</h3>
+                <p className="text-zinc-500 text-sm leading-relaxed">{value.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Mission & Vision */}
-      <section className="border-b border-zinc-800">
-        <div className="max-w-6xl mx-auto px-4 py-12 md:py-16">
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-6 border border-zinc-800 bg-zinc-950">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-zinc-800">
-                  <Target className="w-5 h-5 text-white" />
-                </div>
-                <h2 className="text-xl font-bold">Our Mission</h2>
-              </div>
-              <p className="text-zinc-400">
-                To provide cannabis operators with accurate, reliable, and timely analytical data 
-                that ensures product safety, regulatory compliance, and consumer confidence. We 
-                believe rigorous testing is the foundation of a legitimate industry.
-              </p>
-            </div>
-            <div className="p-6 border border-zinc-800 bg-zinc-950">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-zinc-800">
-                  <TrendingUp className="w-5 h-5 text-white" />
-                </div>
-                <h2 className="text-xl font-bold">Our Vision</h2>
-              </div>
-              <p className="text-zinc-400">
-                A future where cannabis products are held to the same analytical standards as 
-                pharmaceuticals—where every consumer can trust what's on the label, and every 
-                operator has the data they need to produce safe, consistent products.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Core Values */}
-      <section className="border-b border-zinc-800">
-        <div className="max-w-6xl mx-auto px-4 py-12 md:py-16">
-          <h2 className="text-2xl md:text-3xl font-bold mb-2">Core Values</h2>
-          <p className="text-zinc-500 mb-8">The principles that guide everything we do</p>
-          
-          <div className="grid sm:grid-cols-2 gap-4">
-            {values.map((value) => {
-              const Icon = value.icon;
-              return (
-                <div key={value.title} className="p-6 border border-zinc-800 bg-zinc-950">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="p-2 bg-zinc-800">
-                      <Icon className="w-5 h-5 text-white" />
-                    </div>
-                    <h3 className="font-semibold text-white">{value.title}</h3>
-                  </div>
-                  <p className="text-zinc-400 text-sm">{value.description}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       {/* Leadership */}
-      <section className="border-b border-zinc-800">
-        <div className="max-w-6xl mx-auto px-4 py-12 md:py-16">
-          <h2 className="text-2xl md:text-3xl font-bold mb-2">Leadership Team</h2>
-          <p className="text-zinc-500 mb-8">Decades of combined experience in science, operations, and compliance</p>
-          
-          <div className="grid gap-4">
-            {leadership.map((leader) => {
-              const isExpanded = expandedLeader === leader.name;
-              
-              return (
-                <div key={leader.name} className="border border-zinc-800 bg-zinc-950">
-                  <button
-                    onClick={() => setExpandedLeader(isExpanded ? null : leader.name)}
-                    className="w-full p-4 md:p-6 flex items-center gap-4 text-left hover:bg-zinc-900 transition-colors"
-                  >
-                    <div className="w-12 h-12 bg-zinc-800 flex items-center justify-center shrink-0">
-                      <span className="text-lg font-bold text-white">
-                        {leader.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
-                      </span>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-white">{leader.name}</h3>
-                      <p className="text-zinc-500 text-sm">{leader.role}</p>
-                    </div>
-                    <ChevronDown className={`w-5 h-5 text-zinc-500 transition-transform shrink-0 ${isExpanded ? 'rotate-180' : ''}`} />
-                  </button>
-                  
-                  {isExpanded && (
-                    <div className="px-4 md:px-6 pb-4 md:pb-6 border-t border-zinc-800">
-                      <p className="text-zinc-400 text-sm mt-4">{leader.bio}</p>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+      <section className="py-12 sm:py-16 px-4 border-t border-zinc-800">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4">Leadership Team</h2>
+          <p className="text-zinc-400 text-center mb-10 max-w-2xl mx-auto">
+            Our leadership combines decades of experience in analytical chemistry, regulatory compliance, and laboratory operations.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-6">
+            {leadership.map((leader, index) => (
+              <div key={index} className="border border-zinc-800">
+                <button
+                  className="w-full p-6 text-left flex items-center justify-between"
+                  onClick={() => setExpandedLeader(expandedLeader === index ? null : index)}
+                >
+                  <div>
+                    <h3 className="text-lg font-bold">{leader.name}</h3>
+                    <p className="text-zinc-400">{leader.role}</p>
+                  </div>
+                  <ChevronDown 
+                    className={`text-zinc-400 transition-transform ${expandedLeader === index ? 'rotate-180' : ''}`} 
+                    size={24} 
+                  />
+                </button>
+                {expandedLeader === index && (
+                  <div className="px-6 pb-6 border-t border-zinc-800 pt-4">
+                    <p className="text-zinc-400 text-sm leading-relaxed">{leader.bio}</p>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Timeline */}
-      <section className="border-b border-zinc-800">
-        <div className="max-w-6xl mx-auto px-4 py-12 md:py-16">
-          <h2 className="text-2xl md:text-3xl font-bold mb-2">Our Journey</h2>
-          <p className="text-zinc-500 mb-8">Key milestones in building the industry's most trusted lab</p>
-          
-          <div className="space-y-4">
-            {timeline.map((item, idx) => (
-              <div key={idx} className="flex gap-4 p-4 border border-zinc-800 bg-zinc-950">
-                <div className="shrink-0">
-                  <div className="w-14 h-10 flex items-center justify-center bg-white text-black font-bold text-sm">
-                    {item.year}
-                  </div>
+      <section className="py-12 sm:py-16 px-4 border-t border-zinc-800">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10">Our Journey</h2>
+          <div className="space-y-0">
+            {timeline.map((item, index) => (
+              <div key={index} className="flex gap-4 sm:gap-6">
+                <div className="flex flex-col items-center">
+                  <div className="w-3 h-3 bg-white"></div>
+                  {index < timeline.length - 1 && <div className="w-px h-full bg-zinc-800 min-h-[60px]"></div>}
                 </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold text-white mb-1">{item.title}</h3>
-                  <p className="text-zinc-400 text-sm">{item.description}</p>
+                <div className="pb-8">
+                  <span className="text-white font-bold">{item.year}</span>
+                  <p className="text-zinc-400 mt-1">{item.event}</p>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className="py-12 sm:py-16 px-4 border-t border-zinc-800">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {[
+              { value: '500K+', label: 'Samples Tested' },
+              { value: '38', label: 'State Licenses' },
+              { value: '6+', label: 'Years Experience' },
+              { value: '200+', label: 'Labs Certified' }
+            ].map((stat, index) => (
+              <div key={index} className="text-center p-6 border border-zinc-800">
+                <div className="text-3xl sm:text-4xl font-bold mb-2">{stat.value}</div>
+                <div className="text-zinc-400 text-sm">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -276,47 +248,29 @@ export default function About() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="border-b border-zinc-800">
-        <div className="max-w-6xl mx-auto px-4 py-12 md:py-16">
-          <h2 className="text-2xl md:text-3xl font-bold mb-2">Contact Us</h2>
-          <p className="text-zinc-500 mb-8">Get in touch with our team</p>
-          
-          <div className="grid sm:grid-cols-3 gap-4">
-            <a 
-              href="mailto:compliance@quantixanalytics.com"
-              className="p-6 border border-zinc-800 bg-zinc-950 hover:bg-zinc-900 transition-colors"
-            >
-              <Mail className="w-6 h-6 text-white mb-3" />
-              <h3 className="font-semibold text-white mb-1">Email</h3>
-              <p className="text-zinc-400 text-sm break-all">compliance@quantixanalytics.com</p>
+      <section className="py-12 sm:py-16 px-4 border-t border-zinc-800">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6">Get in Touch</h2>
+          <p className="text-zinc-400 mb-8">
+            Ready to achieve compliance excellence? Our team is here to help.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-6 sm:gap-12 mb-10">
+            <a href="mailto:compliance@quantixanalytics.com" className="flex items-center justify-center gap-2 text-zinc-400 hover:text-white transition-colors">
+              <Mail size={20} />
+              <span>compliance@quantixanalytics.com</span>
             </a>
-            <a 
-              href="tel:+18005551234"
-              className="p-6 border border-zinc-800 bg-zinc-950 hover:bg-zinc-900 transition-colors"
-            >
-              <Phone className="w-6 h-6 text-white mb-3" />
-              <h3 className="font-semibold text-white mb-1">Phone</h3>
-              <p className="text-zinc-400 text-sm">1-800-555-1234</p>
+            <a href="tel:+18005551234" className="flex items-center justify-center gap-2 text-zinc-400 hover:text-white transition-colors">
+              <Phone size={20} />
+              <span>(800) 555-1234</span>
             </a>
-            <div className="p-6 border border-zinc-800 bg-zinc-950">
-              <MapPin className="w-6 h-6 text-white mb-3" />
-              <h3 className="font-semibold text-white mb-1">Headquarters</h3>
-              <p className="text-zinc-400 text-sm">1847 Market Street<br />Denver, CO 80202</p>
+            <div className="flex items-center justify-center gap-2 text-zinc-400">
+              <MapPin size={20} />
+              <span>Denver, CO</span>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="border-b border-zinc-800">
-        <div className="max-w-6xl mx-auto px-4 py-12 md:py-16 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Work with Us?</h2>
-          <p className="text-zinc-400 mb-8 max-w-xl mx-auto">
-            Learn about our certifications and see how Quantix Analytics can support your compliance needs.
-          </p>
           <Link 
             href="/"
-            className="inline-block w-full sm:w-auto px-8 py-4 bg-white text-black font-medium hover:bg-zinc-200 transition-colors"
+            className="inline-block px-8 py-4 bg-white text-black font-semibold hover:bg-zinc-200 transition-colors"
           >
             View Our Certifications
           </Link>
@@ -324,22 +278,23 @@ export default function About() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-zinc-950">
-        <div className="max-w-6xl mx-auto px-4 py-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+      <footer className="py-8 px-4 border-t border-zinc-800">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div className="flex items-center gap-2">
             <Image 
               src="https://uaednwpxursknmwdeejn.supabase.co/storage/v1/object/public/product-images/ai-generated/CD2E1122-D511-4EDB-BE5D-98EF274B4BAF/no-bg/E9DA3959-08AF-4881-9CD3-456C8FBA0BF7.png"
               alt="Quantix Analytics"
-              width={120}
-              height={120}
-              className="h-10 w-auto"
+              width={32}
+              height={32}
+              className="h-8 w-auto"
             />
-            <p className="text-zinc-600 text-sm text-center">
-              © 2025 Quantix Analytics. All rights reserved.
-            </p>
+            <span className="font-semibold">QUANTIX ANALYTICS</span>
           </div>
+          <p className="text-zinc-500 text-sm">
+            © 2024 Quantix Analytics. All rights reserved.
+          </p>
         </div>
       </footer>
-    </main>
+    </div>
   );
 }
