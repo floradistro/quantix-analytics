@@ -5,7 +5,7 @@ import { useAuth } from '@/contexts/AuthContext'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
-// Animation removed for cleaner look
+import GeometricBackground from '@/components/OceanBackground'
 
 export default function SignUpPage() {
   const [email, setEmail] = useState('')

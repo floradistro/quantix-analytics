@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { getCOAStats, getPopularStrains } from '@/lib/coaStats'
 import { getSystemHealth } from '@/lib/analytics'
 import { ProtectedRoute } from '@/components/ProtectedRoute'
-// Animation removed for production
+import GeometricBackground from '@/components/OceanBackground'
 import { supabaseData } from '@/lib/supabaseClient'
 
 export const dynamic = 'force-dynamic'

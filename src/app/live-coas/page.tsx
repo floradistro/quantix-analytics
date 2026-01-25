@@ -5,10 +5,7 @@ import { supabaseVendor as supabase } from '@/lib/supabaseClient';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import JSZip from 'jszip';
 
-interface Store {
-  id: string;
-  store_name: string;
-}
+// Store interface kept for future use with client filtering
 import { ProtectedRoute } from '@/components/ProtectedRoute';
 import GeometricBackground from '@/components/OceanBackground';
 import Link from 'next/link';

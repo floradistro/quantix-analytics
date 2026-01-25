@@ -33,6 +33,7 @@ export interface COAData {
   clientName: string;
   clientAddress: string | null;
   licenseNumber: string | null;
+  storeId?: string;
   
   // Dates
   dateCollected: string;
@@ -203,6 +204,7 @@ export interface Client {
   license_number: string | null;
   email?: string | null;
   vendor_id?: string | null; // Links to WhaleTools vendor backend
+  store_id?: string | null; // Store ID for COA uploads
   created_at: string;
   updated_at: string;
 }
