@@ -209,54 +209,39 @@ export interface Client {
   updated_at: string;
 }
 
-// Vendor marketplace types
-export interface Vendor {
+// Store types (replaces old Vendor type)
+export interface Store {
   id: string;
-  email: string;
   store_name: string;
-  slug: string;
-  wordpress_user_id: number | null;
-  status: 'active' | 'inactive' | 'pending';
-  phone: string | null;
+  license_number: string | null;
   address: string | null;
   city: string | null;
   state: string | null;
   zip: string | null;
+  email: string | null;
+  phone: string | null;
+  logo_url: string | null;
   created_at: string;
   updated_at: string;
-  logo_url: string | null;
-  banner_url: string | null;
-  store_description: string | null;
-  store_tagline: string | null;
-  brand_colors: Record<string, string> | null;
-  social_links: Record<string, string> | null;
-  custom_css: string | null;
-  business_hours: Record<string, string | number | boolean> | null;
-  return_policy: string | null;
-  shipping_policy: string | null;
-  total_locations: number;
-  contact_name: string | null;
-  tax_id: string | null;
-  custom_font: string | null;
 }
 
-export interface VendorCOA {
+// Store document (COA) type
+export interface StoreCOA {
   id: string;
-  vendor_id: string;
-  product_id: string | null;
+  store_id: string;
   file_name: string;
   file_url: string;
   file_size: number | null;
   file_type: string;
+  document_type: string;
   lab_name: string | null;
   test_date: string | null;
-  expiry_date: string | null;
   batch_number: string | null;
-  test_results: Record<string, string | number | boolean> | null;
-  is_active: boolean;
-  is_verified: boolean;
   metadata: Record<string, string | number | boolean> | null;
-  upload_date: string;
   created_at: string;
   updated_at: string;
-} 
+}
+
+// Legacy types for backwards compatibility
+export type Vendor = Store;
+export type VendorCOA = StoreCOA; 
